@@ -5,6 +5,7 @@ import { customElement, property } from "lit/decorators.js";
 export class MorphologyTable extends LitElement {
   @property()
   root: String = "فعل";
+  tense: "past" | "present" | "future" = "past";
   render() {
     return html`<div>morphology table</div>`;
   }
