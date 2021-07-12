@@ -4,7 +4,7 @@ import { customElement, property } from "lit/decorators.js";
 @customElement("morphology-table")
 export class MorphologyTable extends LitElement {
   static styles = css`
-    .table-container {
+    .table {
       display: grid;
       grid-template-columns: 75px auto auto auto;
     }
@@ -18,14 +18,12 @@ export class MorphologyTable extends LitElement {
   tense: "past" | "present" | "future" = "past";
   render() {
     return html`<div class="table-container">
-      <div class="cell-header empty"></div>
-      <div class="cell-header">plural</div>
-      <div class="cell-header">dual</div>
-      <div
-        class="
-        cell-header"
-      >
-        singular
+      <div>Morphology Table</div>
+      <div class="table">
+        <div class="cell-header empty"></div>
+        <div class="cell-header">plural</div>
+        <div class="cell-header">dual</div>
+        <div class="cell-header">singular</div>
       </div>
     </div>`;
   }
