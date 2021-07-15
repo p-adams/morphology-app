@@ -1,6 +1,6 @@
 import { css, html, LitElement } from "lit";
 import { customElement, property } from "lit/decorators.js";
-
+import { tense } from "./datatypes/types";
 @customElement("morphology-table")
 export class MorphologyTable extends LitElement {
   static styles = css`
@@ -23,7 +23,7 @@ export class MorphologyTable extends LitElement {
   `;
   @property()
   root: String = "فعل";
-  tense: "past" | "present" | "future" = "past";
+  tense: tense = "past";
   render() {
     return html`<div class="table-container">
       <div class="table-header">
