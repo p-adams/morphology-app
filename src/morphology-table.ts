@@ -40,7 +40,6 @@ export class MorphologyTable extends LitElement {
         <button>Lang</button>
       </div>
       <div class="table">
-        <!-- <div class="cell-header">person & gender</div> -->
         <div class="cell-header">plural</div>
         <div class="cell-header">dual</div>
         <div class="cell-header">singular</div>
