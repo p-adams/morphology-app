@@ -1,6 +1,7 @@
 import { css, html, LitElement } from "lit";
 import { customElement, property } from "lit/decorators.js";
 import { tense } from "./datatypes/types";
+import { produceConjugationsFromRoot } from "./helpers/suffix";
 @customElement("morphology-table")
 export class MorphologyTable extends LitElement {
   static styles = css`
@@ -11,7 +12,7 @@ export class MorphologyTable extends LitElement {
     }
     .table {
       display: grid;
-      grid-template-columns: 10% auto auto auto;
+      grid-template-columns: auto auto auto;
     }
     .cell-header,
     .cell-row {
@@ -22,8 +23,15 @@ export class MorphologyTable extends LitElement {
     }
   `;
   @property()
-  root: String = "فعل";
+  root: string = "فعل";
   tense: tense = "past";
+
+  verbRowsTemplate(root: string) {
+    return produceConjugationsFromRoot(root).map(
+      (v) => html`<div class="cell-row">${v}</div>`
+    );
+  }
+
   render() {
     return html`<div class="table-container">
       <div class="table-header">
@@ -32,30 +40,11 @@ export class MorphologyTable extends LitElement {
         <button>Lang</button>
       </div>
       <div class="table">
-        <div class="cell-header">person & gender</div>
+        <!-- <div class="cell-header">person & gender</div> -->
         <div class="cell-header">plural</div>
         <div class="cell-header">dual</div>
         <div class="cell-header">singular</div>
-        <div class="cell-row">third > masculine</div>
-        <div class="cell-row">فعلوا</div>
-        <div class="cell-row">فعلا</div>
-        <div class="cell-row">فعل</div>
-        <div class="cell-row">third > feminine</div>
-        <div class="cell-row">فعلن</div>
-        <div class="cell-row">فعلتا</div>
-        <div class="cell-row">فعلت</div>
-        <div class="cell-row">second > masculine</div>
-        <div class="cell-row">فعلتم</div>
-        <div class="cell-row">فعلتما</div>
-        <div class="cell-row">فعلت</div>
-        <div class="cell-row">second > feminine</div>
-        <div class="cell-row">فعلتن</div>
-        <div class="cell-row">فعلتما</div>
-        <div class="cell-row">فعلت</div>
-        <div class="cell-row">first > masculine & feminine</div>
-        <div class="cell-row">فعلنا</div>
-        <div class="cell-row"></div>
-        <div class="cell-row">فعلت</div>
+        ${this.verbRowsTemplate(this.root)}
       </div>
     </div>`;
   }
