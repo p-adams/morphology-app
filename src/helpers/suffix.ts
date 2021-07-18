@@ -15,7 +15,7 @@ const pastTenseSuffixes = [
   "",
   "ت",
 ];
-export function produceConjugationsFromRoot(root: string) {
+export function producePastTenseConjugationsFromRoot(root: string) {
   const conjugations = [];
   for (let i = 0; i < 15; i++) {
     // since there is no dual first person, push empty string to render blank row
