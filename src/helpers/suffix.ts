@@ -12,16 +12,17 @@ const pastTenseSuffixes = [
   { suffix: "تما" },
   { suffix: "ت" },
   { suffix: "نا" },
-  { suffix: "" },
+  { suffix: "-" },
   { suffix: "ت" },
 ];
 export function producePastTenseConjugationsFromRoot(root: string) {
   const conjugations = [];
-  for (let i = 0; i < 15; i++) {
-    // since there is no dual first person, push empty string to render blank row
-    i === 13
-      ? conjugations.push("")
-      : conjugations.push(root.concat(pastTenseSuffixes[i].suffix));
+  for (let i = 0; i < pastTenseSuffixes.length; i++) {
+    const suffix = pastTenseSuffixes[i].suffix;
+    // since there is no dual first person, push '-' string to display no data available
+    suffix === "-"
+      ? conjugations.push(suffix)
+      : conjugations.push(root.concat(suffix));
   }
   return conjugations;
 }
