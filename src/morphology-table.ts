@@ -1,7 +1,7 @@
 import { css, html, LitElement } from "lit";
 import { customElement, property } from "lit/decorators.js";
 import { tense } from "./datatypes/types";
-import { producePastTenseConjugationsFromRoot } from "./helpers/suffix";
+import { producePastTenseConjugationsFromRoot } from "./helpers/verbs";
 @customElement("morphology-table")
 export class MorphologyTable extends LitElement {
   static styles = css`
